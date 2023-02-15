@@ -81,6 +81,8 @@ public class StoreImport : EditorWindow
         charaterIcon = (Sprite)EditorGUILayout.ObjectField("Icon", charaterIcon, typeof(Sprite), false);
         characterMaterial ??=
             (Material)AssetDatabase.LoadAssetAtPath("Assets/1_Graphics/Materials/Blue.mat", typeof(Material));
+        characterMaterial =
+            (Material)EditorGUILayout.ObjectField("Material", characterMaterial, typeof(Material), false);
         isPrefabVariant = GUILayout.Toggle(isPrefabVariant, "Create Prefab As Variant");
         if (selectedModels.Count(pair => pair.Value) > 1)
         {
@@ -334,9 +336,8 @@ public class StoreImport : EditorWindow
 
         // Material
         var skinnedMeshRenderer = prefab.GetComponentInChildren<SkinnedMeshRenderer>();
-        Material material =
-            (Material)AssetDatabase.LoadAssetAtPath("Assets/1_Graphics/Materials/Blue.mat", typeof(Material));
-        skinnedMeshRenderer.materials = new Material[] { material, material }; // 1 - haed 2- body
+        
+        skinnedMeshRenderer.materials = new Material[] { characterMaterial, characterMaterial }; // 1 - haed 2- body
         if (!isPrefabVariant)
             PrefabUtility.UnpackPrefabInstance(prefab, PrefabUnpackMode.OutermostRoot, InteractionMode.AutomatedAction);
         var savedPrefab = PrefabUtility.SaveAsPrefabAsset(prefab, localPath);
