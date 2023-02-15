@@ -1,5 +1,6 @@
 # Character creator editor tool
 This tool is used to create new characters from existing models (FBX prefabs)
+https://drive.google.com/file/d/1FL0XOuYgqyWJUMCHFFyF_-cETLpWM3cy/view?usp=sharing
 ## How to use
 ### 1. Import from project
 #### Instructions
